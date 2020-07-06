@@ -1,0 +1,25 @@
+!pip install kaggle
+
+
+!mkdir ~/.kaggle
+!touch ~/.kaggle/kaggle.json
+
+api_token = {"username":"vinodkumar9576","key":"ce91d6092b0f389584d0dca02babd94e"}
+
+import json
+
+with open('/root/.kaggle/kaggle.json', 'w') as file:
+    json.dump(api_token, file)
+
+!chmod 600 ~/.kaggle/kaggle.json
+
+
+
+
+
+import pandas as pd
+from zipfile import ZipFile
+zip_file = ZipFile('/content/amazon-fine-food-reviews.zip')
+#fields= ['product','consumer_complaint_narrative'] 
+data=pd.read_csv(zip_file.open('Reviews.csv'))
+data.head()
